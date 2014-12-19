@@ -1,12 +1,12 @@
 {
   "nightly": {
-    "name": "dart-chrome-app (nightly)",
+    "name": "ruffnote-plus (nightly)",
     "branch": "master",
     "id": "igpiamleninpnffljjnjihmjmmmcakkl",
-    "description": "dart-chrome-app - nightly version"
+    "description": "ruffnote-plus - nightly version"
   },
   "stable": {
-    "name": "dart-chrome-app (stable)",
+    "name": "ruffnote-plus (stable)",
     "branch": "stable",
     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   }

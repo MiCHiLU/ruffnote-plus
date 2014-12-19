@@ -14,7 +14,7 @@ import 'package:polymer/builder.dart' as polymer;
 
 import 'webstore_client.dart';
 
-const String MAIN_REPOSITORY_URL = 'git@github.com:MiCHiLU/dart-chrome-app.git';
+const String MAIN_REPOSITORY_URL = 'git@github.com:MiCHiLU/ruffnote-plus.git';
 
 final NumberFormat _NF = new NumberFormat.decimalPattern();
 
@@ -84,7 +84,7 @@ void lint(GrinderContext context) {
   polymer.lint(
       entryPoints: [entryPoint],
       options: polymer.parseOptions([]),
-      currentPackage: 'dart-chrome-app'
+      currentPackage: 'ruffnote-plus'
   );
 
   context.log('');
@@ -124,7 +124,7 @@ void deploy(GrinderContext context) {
 
   Directory deployWeb = joinDir(destDir, ['web']);
 
-  // Compile the main dart-chrome-app app.
+  // Compile the main ruffnote-plus app.
   _dart2jsCompile(context, deployWeb, 'index.html_bootstrap.dart');
 
   //// Compile the services entry-point.
@@ -167,13 +167,13 @@ Future releaseNightly(GrinderContext context) {
   String repositoryUrl = _getRepositoryUrl();
   if (repositoryUrl != MAIN_REPOSITORY_URL) {
     // Unexpected situation. Don't try to upload a fork to the web store.
-    context.fail("dart-chrome-app can't be released from here. ${repositoryUrl}");
+    context.fail("ruffnote-plus can't be released from here. ${repositoryUrl}");
   }
 
   if (channel == null) {
     // This branch is not part of any channel.
-    context.fail("dart-chrome-app can't be released from here. Building branch ${buildBranchName}");
-    return new Future.error("dart-chrome-app can't be released from here.");
+    context.fail("ruffnote-plus can't be released from here. Building branch ${buildBranchName}");
+    return new Future.error("ruffnote-plus can't be released from here.");
   }
 
   String appID = channelConfig['id'];
@@ -187,7 +187,7 @@ Future releaseNightly(GrinderContext context) {
 
   // Creating an archive of the Chrome App.
   context.log('Creating build ${version}');
-  String filename = 'dart-chrome-app-${version}.zip';
+  String filename = 'ruffnote-plus-${version}.zip';
   archive(context, filename);
   context.log('Created ${filename}');
 
@@ -216,9 +216,9 @@ Future releaseNightly(GrinderContext context) {
 //   folders by the "compile" task
 // - Copy the packages/ directory to build/chrome-app/packages
 // - Remove test
-// - Zip the content of build/chrome-app to dist/dart-chrome-app.zip
+// - Zip the content of build/chrome-app to dist/ruffnote-plus.zip
 void archive(GrinderContext context, [String outputZip]) {
-  final String appZip = outputZip == null ? '${DIST_DIR.path}/dart-chrome-app.zip' :
+  final String appZip = outputZip == null ? '${DIST_DIR.path}/ruffnote-plus.zip' :
                                               '${DIST_DIR.path}/${outputZip}';
   _delete(appZip);
   _removeSymlinks(joinDir(BUILD_DIR, ['web']), ignoreTop : true);
@@ -403,7 +403,7 @@ String _getCurrentRevision() {
 void _archiveWithRevision(GrinderContext context) {
   context.log('Performing archive instead.');
   String version = _getCurrentRevision();
-  String filename = 'dart-chrome-app-rev-${version}.zip';
+  String filename = 'ruffnote-plus-rev-${version}.zip';
   archive(context, filename);
   context.log("Created ${filename}");
 }
@@ -422,7 +422,7 @@ String _modifyManifestWithDroneIOBuildNumber(GrinderContext context,
   String majorVersion = (new DateFormat('y.M.d.Hmm')).format(now);
   String version = '${majorVersion}${now.second ~/ 10}';
   manifestDict['version'] = version;
-  manifestDict['x-dart-chrome-app-revision'] = revision;
+  manifestDict['x-ruffnote-plus-revision'] = revision;
   manifestDict.remove('key');
   file.writeAsStringSync(new JsonPrinter().print(manifestDict));
 

@@ -1,4 +1,4 @@
-name: dart-chrome-app
+name: ruffnote-plus
 description: A sample Dart Chrome packaged application
 dependencies:
   chrome: '>=0.6.1 <0.7.0'

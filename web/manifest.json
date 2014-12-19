@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "dart-chrome-app",
-  "short_name": "dart-chrome-app",
-  "description": "Description for dart-chrome-app",
+  "name": "ruffnote-plus",
+  "short_name": "ruffnote-plus",
+  "description": "Description for ruffnote-plus",
 
   "version": "2014.12.1.28",
 
